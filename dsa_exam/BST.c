@@ -66,11 +66,19 @@ void inorder(struct node* root) {
     }
 }
 
+void postorder(struct node* root) {
+    if (root != NULL) {
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ", root->data);
+
+    }
+}
 // Function to find the minimum value node in a tree
 struct node* minValueNode(struct node* node) {
     struct node* current = node;
     // Loop down to find the leftmost leaf
-    while (current && current->left != NULL)
+    while (current!=NULL && current->left != NULL)
         current = current->left;
     return current;
 }
@@ -119,6 +127,8 @@ int main() {
     printf("Inorder traversal: ");
     inorder(root);
     printf("\n");
+    postorder(root);
+    printf("\n");
   char y = 'y';
 do{
     int keyToDelete;
@@ -130,7 +140,8 @@ do{
 
     printf("Inorder traversal after deletion: ");
     inorder(root);
-
+     printf("\n");
+    postorder(root);
     printf(" \n enter y to continue y/n ");
     scanf(" %c",&y);
 }while(y=='y');

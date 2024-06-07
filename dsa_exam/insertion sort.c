@@ -8,12 +8,16 @@ void insertion_sort(int arr[], int n)
     {
         int k = arr[i];
         int j = i-1;
-        for(int s = j;s>=0;s--)
+        for(j;j>=0;j--)
         {
             if(k<arr[j])
             {
-                arr[s+1] = arr[s];
-                j--;
+                arr[j+1] = arr[j];
+
+            }
+            else
+            {
+                break;
             }
 
         }
@@ -28,8 +32,8 @@ void printarr(int arr[],int n)
     }
 }
 int main()
-{ int q[100]={16,4,9,3,5};
-    int n = 5;
+{ int q[100]={16,4,9,3,5,999,-41};
+    int n = 7;
     insertion_sort(q,n);
     printarr(q,n);
     return 0;

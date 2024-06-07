@@ -16,6 +16,6 @@ void tower_of_hanoi(char s, char d, char a, int n)
 }
 int main()
 {
-    tower_of_hanoi('a','c','b',3);
+    tower_of_hanoi('a','c','b',2);
     return 0;
 }

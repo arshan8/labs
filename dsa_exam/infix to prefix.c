@@ -73,21 +73,30 @@ void infixToPrefix(char* infix, char* prefix) {
     int i, j = 0;
     for (i = 0; infix[i]; i++) {
         char ch = infix[i];
-        if (isOperand(ch)) {
+        if (isOperand(ch))
+        {
             prefix[j++] = ch;
-        } else if (ch == ')') {
+        }
+        else if (ch == ')')
+        {
             push(ch);
-        } else if (ch == '(') {
+        }
+
+        else if (ch == '(')
+        {
             while (!isEmpty() && stack[top] != ')') {
                 prefix[j++] = pop();
             }
             pop(); // Pop the ')'
-        } else {
-            while (!isEmpty() && precedence(ch) <= precedence(stack[top])) {
-                prefix[j++] = pop();
-            }
-            push(ch);
         }
+
+        else
+           {
+             while (!isEmpty() && precedence(ch) <= precedence(stack[top])) {
+                prefix[j++] = pop();
+               }
+              push(ch);
+           }
     }
 
     // Pop remaining operators from stack
