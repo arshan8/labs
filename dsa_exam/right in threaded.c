@@ -13,13 +13,18 @@ struct node* root = NULL;
 struct node* head = NULL;
 
 struct node* createnode(int key ) {
-    struct node* newnode = (struct node*)malloc(sizeof(struct node));
-    newnode->data = key;
-    newnode->left = NULL;
-    newnode->right = NULL;
-    newnode->isrt = 0;
-    return newnode;
+  struct node* newnode = (struct node*)malloc(sizeof(struct node));
+  if (newnode == NULL) {
+    printf("Memory allocation error!\n");
+    exit(1);  // Or handle the error differently
+  }
+  newnode->data = key;
+  newnode->left = NULL;
+  newnode->right = NULL;
+  newnode->isrt = 0;
+  return newnode;
 }
+
 
 struct node* create()
 {
@@ -91,11 +96,13 @@ void inorder(struct node* root)
     {
         curr = curr->left;
     }
-    while(curr->right != head)
+
+    while(curr != head)
     {
         printf("%d ",curr->data);
         curr = curr->right;
     }
+     printf("%d ",curr->left->data);
 }
 
 int main()
