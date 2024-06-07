@@ -91,11 +91,12 @@ void inorder(struct node* root)
     {
         curr = curr->left;
     }
-    while(curr->right != head)
+    while(curr != head)
     {
         printf("%d ",curr->data);
         curr = curr->right;
     }
+    printf("%d",curr->left->data)
 }
 
 int main()
