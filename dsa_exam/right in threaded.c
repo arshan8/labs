@@ -96,20 +96,15 @@ void inorder(struct node* root)
     {
         curr = curr->left;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 7a9e708a65f2287dc37b6bb8a0b22b07e942b6e7
     while(curr != head)
     {
         printf("%d ",curr->data);
         curr = curr->right;
     }
-<<<<<<< HEAD
      printf("%d ",curr->left->data);
-=======
-    printf("%d",curr->left->data)
->>>>>>> 7a9e708a65f2287dc37b6bb8a0b22b07e942b6e7
+
+
+
 }
 
 int main()
