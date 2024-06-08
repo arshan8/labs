@@ -76,7 +76,7 @@ void postorder(struct node* root) {
 }
 // Function to find the minimum value node in a tree
 struct node* minValueNode(struct node* node) {
-    struct node* current = node;
+    struct node* current = node->right;
     // Loop down to find the leftmost leaf
     while (current!=NULL && current->left != NULL)
         current = current->left;
@@ -110,7 +110,7 @@ struct node* deleteNode(struct node* root, int key) {
         }
 
         // Node with two children: Get the inorder successor (smallest in the right subtree)
-        struct node* temp = minValueNode(root->right);
+        struct node* temp = minValueNode(root);
 
         // Copy the inorder successor's content to this node
         root->data = temp->data;
