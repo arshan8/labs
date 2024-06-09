@@ -71,7 +71,7 @@ void infixToPrefix(char* infix, char* prefix) {
     reverseString(infix);
 
     int i, j = 0;
-    for (i = 0; infix[i]; i++) {
+    for (i = 0; infix[i]!='\0'; i++) {
         char ch = infix[i];
         if (isOperand(ch))
         {

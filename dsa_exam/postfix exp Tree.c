@@ -9,26 +9,20 @@ struct node {
     struct node *right;
 };
 
-typedef struct node *NODE;
+//typedef struct node *NODE;
 
-NODE create_tree(char postfix[], int *index);
-float eval(NODE root);
-
-int main() {
-    char postfix[20];
-    printf("Enter the postfix expression: ");
-    scanf("%s", postfix);
-
-    int index = strlen(postfix) - 1; // Start from the end of the string
-    NODE root = create_tree(postfix, &index);
-
-    float result = eval(root);
-    printf("Result = %f\n", result);
-
-    return 0;
+void inorder(struct node *root)
+{
+    if(root!=NULL)
+    {
+        inorder(root->left);
+        printf("%c",root->data);
+        inorder(root->right);
+    }
 }
 
-NODE create_tree(char postfix[], int *index) {
+
+struct node * create_tree(char postfix[], int *index) {
     if (*index < 0) {
         return NULL;
     }
@@ -36,7 +30,7 @@ NODE create_tree(char postfix[], int *index) {
     char symbol = postfix[*index];
     (*index)--;
 
-    NODE temp = (NODE)malloc(sizeof(struct node));
+    struct node * temp = (struct node *)malloc(sizeof(struct node));
     temp->data = symbol;
     temp->left = temp->right = NULL;
 
@@ -49,7 +43,7 @@ NODE create_tree(char postfix[], int *index) {
     }
 }
 
-float eval(NODE root) {
+float eval(struct node * root) {
     float num;
     switch (root->data) {
         case '+': return eval(root->left) + eval(root->right);
@@ -68,4 +62,22 @@ float eval(NODE root) {
     }
 }
 
+
+
+int main() {
+    char postfix[20];
+    printf("Enter the postfix expression: ");
+    scanf("%s", postfix);
+
+    int index = strlen(postfix) - 1; // Start from the end of the string
+   struct node * root = create_tree(postfix, &index);
+
+    float result = eval(root);
+    printf("Result = %f\n", result);
+
+    printf("\n INFIX: ");
+    inorder(root);
+
+    return 0;
+}
 
