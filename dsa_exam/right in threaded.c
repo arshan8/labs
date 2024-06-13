@@ -20,7 +20,7 @@ struct node* createnode(int key) {
     newnode->data = key;
     newnode->left = NULL;
     newnode->right = NULL;
-    newnode->isrt = 0;
+    newnode->isrt = 0;  //thread initialy
     return newnode;
 }
 
@@ -35,6 +35,7 @@ struct node* create() {
             head = createnode(9999);
             root = temp;
             head->right = head;
+            head->left = root;
             head->isrt = 1;
             root->right = head;
         } else {
@@ -59,8 +60,9 @@ void insert(struct node* root, struct node* temp) {
         }
     }
 
-    if(temp->data > root->data) {
-        if (root->right == NULL) {
+    else if(temp->data > root->data) {
+
+        if (root->isrt==0) {  //if root has no child, but thread
             temp->right = root->right;
             root->right = temp;
             root->isrt = 1;
@@ -79,7 +81,7 @@ void inorder(struct node* root) {
         printf("%d ", curr->data);
             curr = curr->right;
         }
-      printf("%d ", curr->left->data);
+     // printf("%d ", curr->left->data);
     }
 
 
